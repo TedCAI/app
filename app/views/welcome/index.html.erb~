@@ -1,17 +1,14 @@
 <h1>Hello, Rails!</h1>
-
-<%= link_to 'My Blog', controller: 'records' %>
+<div id="form">
+<%= link_to 'Records', controller: 'records' %>
 	<%= form_for :record, url: records_path do |f|%>
 		<p>
 		<%= f.text_field :link, :id=>"field" %>
-		</p>
-		<p>
 		<%= f.text_field :name, :id=>"field1" %>
-		</p>
 		<%= f.submit %>
+		</p>
 	<% end %>
-<% a, :id=>"test"%>
-
+</div>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -45,7 +42,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
   var latlng = new google.maps.LatLng(-34.397, 150.644);
   var mapOptions = {
-    zoom: 8,
+    zoom: 12,
     center: latlng
   }
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -128,7 +125,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <input id="address" type="textbox" value="Sydney, NSW">
 			<input id="name" type="textbox" value="Bank">
 			<input id="radius" type="textbox" value="1500">
-      <input type="button" value="Geocode" onclick="codeAddress()">
+      <input type="button" value="Search" onclick="codeAddress()">
     </div>
     <div id="map-canvas"></div>
   </body>
