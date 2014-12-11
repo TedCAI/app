@@ -1,4 +1,4 @@
-bvdapp.ted
+App with Google API
 ==========
 
-App backup
+Rails + Postgresql + Javascript + Google API
