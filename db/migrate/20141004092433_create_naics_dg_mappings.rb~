@@ -1,0 +1,12 @@
+class CreateNaicsDgMappings < ActiveRecord::Migration
+  def change
+    create_table :naics_dg_mappings do |t|
+      t.string :dg_industry
+      t.string :dg_sector
+      t.integer :naics
+      t.string :description
+
+      t.timestamps
+    end
+  end
+end

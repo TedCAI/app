@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @record.country %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @record.city %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @record.name %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @record.postcode %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @record.website %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @record.link %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @record.status %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

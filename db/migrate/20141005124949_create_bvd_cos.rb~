@@ -1,0 +1,61 @@
+class CreateBvdCos < ActiveRecord::Migration
+  def change
+    create_table :bvd_cos do |t|
+      t.string :name
+      t.string :bvdid
+      t.string :country
+      t.string :city
+      t.integer :primary_naics
+      t.text :secondary_naics
+      t.integer :core_code_naics
+      t.text :core_naics_text_description
+      t.integer :primary_sic
+      t.text :secondary_sic
+      t.text :bvd_major_sector
+      t.text :trade_description
+      t.text :category_of_the_company
+      t.integer :date_of_incorporation
+      t.string :type_of_entity
+      t.string :status
+      t.string :listed_unlisted_delisted
+      t.integer :operating_revenue_lcu_ly0
+      t.integer :operating_revenue_lcu_ly1
+      t.integer :operating_revenue_lcu_ly2
+      t.integer :operating_revenue_usd_ly0
+      t.integer :operating_revenue_usd_ly1
+      t.integer :operating_revenue_usd_ly2
+      t.integer :ebitda_lcu_ly0
+      t.integer :ebitda_lcu_ly1
+      t.integer :ebitda_lcu_ly2
+      t.integer :ebitda_usd_ly0
+      t.integer :ebitda_usd_ly1
+      t.integer :ebitda_usd_ly2
+      t.integer :employees_ly0
+      t.integer :employees_ly1
+      t.integer :employees_ly2
+      t.integer :total_assets_lcu_ly0
+      t.integer :total_assets_lcu_ly1
+      t.integer :total_assets_lcu_ly2
+      t.integer :total_assets_usd_ly0
+      t.integer :total_assets_usd_ly1
+      t.integer :total_assets_usd_ly2
+      t.integer :closing_date_ly0
+      t.integer :closing_date_ly1
+      t.integer :closing_date_ly2
+      t.string :native_currency
+      t.string :full_name_of_main_manager
+      t.text :auditor_name
+      t.string :auditor_type
+      t.string :guo_name
+      t.string :guo_bvd_id_number
+      t.string :guo_country_iso_code
+      t.float :guo_total
+      t.float :guo_direct
+      t.string :guo_type
+      t.string :guo_information_source
+      t.string :guo_information_date
+
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,50 @@
+to create model in rails;
+
+rails g scaffold ModelName field:integer field2:string field3:
+
+
+useful pg commands
+
+$ sudo su - 
+(to become root)
+# su - postgres
+(to become pg)
+$ psql
+\list
+\c <databasename>
+\d+ <tablename>
+copy zephyr_entity_bases(zephus_id,bvd_id,"name") from '/home/alan/bvddata/entity_base_no_header.txt'
+
+to create new copy of file without top row
+
+$ tail -n +2 filename.txt > newfilename.txt
+
+
+
+copy deal_overviews(deal_number,deal_headline,target_name,acquiror_name,vendor_name,deal_type,deal_status,deal_type_text,target_zephus_id_number,acquiror_zephus_id_number,vendor_zephus_id_number,target_bvd_id_number,acquiror_bvd_id_number,vendor_bvd_id_number) from '/home/alan/bvddata/deal_overview_no_header.txt' null as ''
+;
+copy deal_advisors_links(deal_number,role_id,role_description,parent_role_id,location,company_zephus_id,deal_professional_forename,deal_professional_surname) from '/home/yunxuan/Dropbox/bvd_data_share/deal_advisors_links.txt' null as '';
+copy naics_dg_mappings(dg_industry,dg_sector,naics,description) from '/home/yunxuan/Dropbox/bvd_data_share/naics_dg_mapping_no_header.txt' null as '';
+
+copy bvd_cos(name,bvdid,country,city,primary_naics,secondary_naics,core_code_naics,core_naics_text_description,primary_sic,secondary_sic,bvd_major_sector,trade_description, category_of_the_company,date_of_incorporation,type_of_entity,status,listed_unlisted_delisted,operating_revenue_lcu_ly0,operating_revenue_lcu_ly1,operating_revenue_lcu_ly2, operating_revenue_usd_ly0,operating_revenue_usd_ly1,operating_revenue_usd_ly2,ebitda_lcu_ly0,ebitda_lcu_ly1,ebitda_lcu_ly2,ebitda_usd_ly0,ebitda_usd_ly1,ebitda_usd_ly2, employees_ly0,employees_ly1,employees_ly2,total_assets_lcu_ly0,total_assets_lcu_ly1,total_assets_lcu_ly2,total_assets_usd_ly0,total_assets_usd_ly1,total_assets_usd_ly2, closing_date_ly0,closing_date_ly1,closing_date_ly2,native_currency,full_name_of_main_manager,auditor_name,auditor_type,guo_name,guo_bvd_id_number,guo_country_iso_code, guo_total,guo_direct,guo_type,guo_information_source,guo_information_date) from '/home/yunxuan/cos0_2m_no_header.txt' null as '';
+
+update bvd_cos set first_primary_naics_id =  (select cast (a[1] as int) from ( select string_to_array(primary_naics, '|')) as dt ( a ));
+
+copy (select deal_number,deal_professional_forename,deal_professional_surname,company_zephus_id from deal_advisors_links where (deal_professional_surname is NOT NULL) AND role_description like '%Advisor%') to '/home/yunxuan/extract.txt';
+copy extract_info(deal_number, advisor_firstname, advisor_surname,zephus_id) from '/home/yunxuan/extract.txt';
+
+
+
+update extract_info t1                               
+set country_code = bvd_cos.guo_country_iso_code
+from bvd_cos, deal_overviews
+where bvd_cos.bvdid = deal_overviews.target_bvd_id_number
+and t1.deal_number = deal_overviews.deal_number;
+
+update extract_info t1
+set deal_description = deal_overviews.deal_headline
+from deal_overviews
+where deal_overviews.deal_number = t1.deal_number;
+
+
+

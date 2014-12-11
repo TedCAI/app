@@ -1,0 +1,8 @@
+class CreatePeopleRecomendations < ActiveRecord::Migration
+  def change
+    create_table :people_recomendations do |t|
+
+      t.timestamps
+    end
+  end
+end
