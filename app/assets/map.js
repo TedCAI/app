@@ -1,10 +1,10 @@
-//$.getScript("https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places", function(){
+$.getScript("https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places", function(){
 
    //alert("Script loaded and executed.");
    // Here you can use anything you defined in the loaded script
-
 var map;
 var infowindow;
+
 
 function initialize() {
   var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
@@ -52,6 +52,8 @@ function createMarker(place) {
   });
 }
 
+//function map(){
 google.maps.event.addDomListener(window, 'load', initialize);
 
-//});
+//}
+});

@@ -1,0 +1,50 @@
+<h1>Hello, Rails!</h1>
+
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Geocoding service</title>
+    <style>
+      html, body, #map-canvas {
+        height: 80%;
+		width: 90%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+    <script scr="loadscript.js"></script>
+    <script scr="map.js"></script>
+  </head>
+  <body>
+    <div id="panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+			<input id="name" type="textbox" value="Bank">
+			<input id="radius" type="textbox" value="1500">
+      <input type="button" value="Search" onclick="codeAddress()">
+    </div>
+    <div id="map-canvas"></div>
+<div id="form">
+<%= link_to 'Records', controller: 'records' %>
+	<%= form_for :record, url: records_path do |f|%>
+		<p>
+		<%= f.text_field :link, :id=>"field" %>
+		<%= f.text_field :name, :id=>"field1" %>
+		<%= f.submit %>
+		</p>
+	<% end %>
+</div>
+  </body>
+
+
