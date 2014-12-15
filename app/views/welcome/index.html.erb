@@ -90,9 +90,9 @@ function callback(results_n, status) {
 function detailcallback(place, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     $(document).ready(function(){
-			$('#detail_name').val(place["name"]);
+			$('#detail_name').val(place["url"]);
 			$('#detail_website').val(place["website"]);
-			$('#detail_address').val(place["formatted_address"]);
+			$('#detail_address').val(place["icon"]);
 		});
   }
 }
